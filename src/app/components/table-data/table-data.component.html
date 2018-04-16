@@ -1,0 +1,20 @@
+<h2> {{tableName}} </h2>
+<table class="table table-striped">
+    <!-- Create headers -->
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" *ngFor="let col of headers">
+        {{col | uppercase}}
+      </th>
+    </tr>
+  </thead>
+
+    <!-- Populate body with data -->
+  <tbody>
+    <tr scope="row" *ngFor="let row of data">
+      <td *ngFor="let col of headers">
+        {{row[col] | tableFormatter: col}}
+      </td>
+    </tr>
+  </tbody>
+</table>
