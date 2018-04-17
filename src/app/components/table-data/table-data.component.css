@@ -1,0 +1,16 @@
+th {
+  background-color: #ff9999;
+}
+
+th:hover {
+  background-color: #e6e6e6;
+  cursor: grab;
+}
+
+tr {
+  cursor: default;
+}
+
+tr:hover {
+  background-color: #e6e6e6;
+}
