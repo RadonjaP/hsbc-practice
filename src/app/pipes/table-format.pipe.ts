@@ -8,7 +8,7 @@ export class TableFormatterPipe implements PipeTransform {
       return '';
     }
     if (col === 'salary') {
-      return value + ' £';
+      return '£ ' + value;
     } else if (col === 'birthDate') {
       let pipe = new DatePipe('en-UK');
       return pipe.transform(value, 'dd/MM/yyyy');

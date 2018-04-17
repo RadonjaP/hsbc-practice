@@ -12,17 +12,17 @@ export class TableDataComponent implements OnInit {
   @Input() private data: any;
   @Input() private headers: TableHeader[];
 
-  public descend = false;
-
   constructor() { }
 
   ngOnInit() {
   }
 
+  // Select row to process
   public selectRow(target) {
     console.log("selectRow() --> ")
   }
 
+  // Used to sort data by header
   public sortHeader(header: TableHeader) {
     var id = header.id;
     var desc = header.sortDirection;
@@ -34,6 +34,7 @@ export class TableDataComponent implements OnInit {
     header.changeDirection();
   }
 
+  // Switch between header's glyphicons
   public getGlyphicon(header: TableHeader) {
     if (header.sortDirection == -1) {
       return 'glyphicon glyphicon-chevron-down';

@@ -1,7 +1,7 @@
 export class TableHeader {
 
-  private DIRECTION_ASCEND = 1;
-  private DIRECTION_DESCEND = -1;
+  static readonly DIRECTION_ASCEND = 1;
+  static readonly DIRECTION_DESCEND = -1;
 
   id: string;
   name: string;
@@ -13,11 +13,11 @@ export class TableHeader {
       name = id.toUpperCase();
     }
     this.name = name;
-    this.sortDirection = this.DIRECTION_ASCEND;
+    this.sortDirection = TableHeader.DIRECTION_ASCEND;
   }
 
   public changeDirection() {
-    this.sortDirection = this.sortDirection == this.DIRECTION_ASCEND ? this.DIRECTION_DESCEND : this.DIRECTION_ASCEND;
+    this.sortDirection = this.sortDirection == TableHeader.DIRECTION_ASCEND ? TableHeader.DIRECTION_DESCEND : TableHeader.DIRECTION_ASCEND;
   }
 
 }
