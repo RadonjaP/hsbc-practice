@@ -9,5 +9,4 @@ export class EmployeeService {
   public getData() {
     return this.employees;
   }
-
 }

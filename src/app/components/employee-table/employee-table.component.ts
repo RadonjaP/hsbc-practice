@@ -6,7 +6,7 @@ import { TableHeader } from '../../models/table-header';
 @Component({
   selector: 'app-employee-table',
   templateUrl: './employee-table.component.html',
-  styleUrls: ['./employee-table.component.css'],
+  styleUrls: [],
   providers: [EmployeeService]
 })
 export class EmployeeTableComponent implements OnInit {
@@ -19,7 +19,7 @@ export class EmployeeTableComponent implements OnInit {
     new TableHeader('job', 'Job'),
     new TableHeader('salary', 'Salary')];
 
-  public employees : Employee[];
+  public employees : Employee[]
 
   constructor(private employeeService: EmployeeService) {
   }

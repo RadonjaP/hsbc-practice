@@ -12,11 +12,13 @@
     </thead>
     <!-- Populate body with data -->
     <tbody>
-      <tr scope="row" *ngFor="let row of data" (click)="selectRow($event)">
+      <tr scope="row" *ngFor="let row of displayedData" (click)="selectRow($event)">
         <td *ngFor="let header of headers">
           {{row[header.id] | tableFormatter: header.id}}
         </td>
       </tr>
     </tbody>
   </table>
+  <pagination-component *ngIf="pagination" (changeIndexEvent)="switchPage($event)" [data]="data" [displaySize]="displaySize">
+  </pagination-component>
 </div>
