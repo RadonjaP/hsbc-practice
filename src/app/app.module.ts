@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
 import { TableDataComponent } from './components/table-data/table-data.component';
 import { TableFormatterPipe } from './pipes/table-format.pipe';
-import { PaginationComponentComponent } from './components/pagination-component/pagination-component.component';
+import { PaginationComponentComponent } from './components/table-data/pagination-component/pagination-component.component';
+import { FilterComponentComponent } from './components/table-data/filter-component/filter-component.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PaginationComponentComponent } from './components/pagination-component/
     EmployeeTableComponent,
     TableDataComponent,
     TableFormatterPipe,
-    PaginationComponentComponent
+    PaginationComponentComponent,
+    FilterComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee }  from '../../models/employee';
 import { TableHeader } from '../../models/table-header';
+import { FilterField } from '../../models/filter-field';
 
 @Component({
   selector: 'app-employee-table',
@@ -19,6 +20,11 @@ export class EmployeeTableComponent implements OnInit {
     new TableHeader('job', 'Job'),
     new TableHeader('salary', 'Salary')];
 
+  public filterFields = [
+    new FilterField('id', 'Id'),
+    new FilterField('name', 'Name'),
+    new FilterField('job', 'Job')
+  ]
   public employees : Employee[]
 
   constructor(private employeeService: EmployeeService) {
@@ -26,6 +32,11 @@ export class EmployeeTableComponent implements OnInit {
 
   ngOnInit() {
     this.employees = this.employeeService.getData();
+  }
+
+  public selectRowImplementation($event) {
+    let employee = $event.row;
+    console.log("Employee selected: " + employee.name + " " + employee.lastname);
   }
 
 }

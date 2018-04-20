@@ -7,10 +7,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PaginationComponentComponent implements OnInit {
 
-  public index: number;
-  public numberOfPages: number;
   @Input() public data: any[];
   @Input() public displaySize: number;
+  
+  public index: number;
+  public numberOfPages: number;
 
   @Output() changeIndexEvent = new EventEmitter<any>();
 
@@ -28,14 +29,14 @@ export class PaginationComponentComponent implements OnInit {
   }
 
   public nextPage() {
-    if (this.index != this.numberOfPages) {
+    if (this.index < this.numberOfPages) {
       this.index++;
     }
     this.changeIndexEvent.emit({index: this.index, displaySize: this.displaySize});
   }
 
   public previousPage() {
-    if (this.index != 1) {
+    if (this.index > 1) {
       this.index--;
     }
     this.changeIndexEvent.emit({index: this.index, displaySize: this.displaySize});

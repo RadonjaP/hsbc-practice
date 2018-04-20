@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TableHeader } from '../../models/table-header';
+import { FilterField } from '../../models/filter-field';
 
 @Component({
   selector: 'app-table-data',
@@ -13,8 +14,12 @@ export class TableDataComponent implements OnInit {
   @Input() private headers: TableHeader[];
   @Input() private displaySize: number;
   @Input() private pagination: boolean;
+  @Input() private filter: boolean;
+  @Input() private filterFields: FilterField[];
 
   private displayedData: any[];
+
+  @Output() private clickRowEvent = new EventEmitter<any>();
 
   constructor() { }
 
@@ -28,8 +33,8 @@ export class TableDataComponent implements OnInit {
   }
 
   // Select row to process
-  public selectRow(target) {
-    console.log("selectRow() --> ")
+  public selectRow(row) {
+    this.clickRowEvent.emit({'row': row});
   }
 
   // Used to sort data by header
@@ -54,10 +59,17 @@ export class TableDataComponent implements OnInit {
 
   }
 
+  // Activated on pagination component
   public switchPage($event) {
     let end = $event.index * $event.displaySize;
     let start = end - $event.displaySize;
     this.displayedData = this.data.slice(start, end);
+  }
+
+  // Activated on filter component
+  public filterData($event) {
+    this.data = $event.filteredData;
+    this.displayedData = this.data.slice(0, this.displaySize);
   }
 
 }

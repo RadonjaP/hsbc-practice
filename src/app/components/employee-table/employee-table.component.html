@@ -3,7 +3,10 @@
     [tableName]="'Employee table'"
     [data]="employees"
     [headers]="headers"
+    [filter]="true"
+    [filterFields] = "filterFields"
     [pagination]="true"
-    [displaySize]="5">
+    [displaySize]="10"
+    (clickRowEvent)="selectRowImplementation($event)">
   </app-table-data>
 </div>
