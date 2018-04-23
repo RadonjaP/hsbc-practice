@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild } from '@angular/core';
 import { FilterField } from '../../../models/filter-field';
 
 @Component({
@@ -20,7 +20,7 @@ export class FilterComponentComponent implements OnInit {
   ngOnInit() {
     this.originalData = this.data;
   }
-  
+
   public filterData() {
     let filteredData = this.originalData;
     let clearFilter = true;
@@ -32,6 +32,10 @@ export class FilterComponentComponent implements OnInit {
       }
     }
     this.filterDataEvent.emit({'filteredData': filteredData});
+  }
+
+  public setOriginalData(data: any[]) {
+    this.originalData = data;
   }
 
 }

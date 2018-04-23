@@ -32,6 +32,7 @@ export class EmployeeService {
     }).first();
   }
 
+  // Parse data in csv format to array of Employee Objects
   public processData(data: any) {
     let employees = data.split("\n");
     let tempEmployees = new Array<Employee>();
