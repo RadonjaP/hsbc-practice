@@ -10,7 +10,8 @@ input {
 }
 
 #filter-container {
-  padding: 3px;
+  padding: 4px;
+  margin-bottom: 6px;
   text-align: left;
   border-top: 1px;
   border-top-style: solid;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { TableHeader } from '../../models/table-header';
 import { FilterField } from '../../models/filter-field';
 
@@ -29,6 +29,13 @@ export class TableDataComponent implements OnInit {
     } else {
       this.displaySize = this.data.length;
       this.displayedData = this.data;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.data.firstChange) {
+      this.data = changes.data.currentValue;
+      this.displayedData = this.data.slice(0, this.displaySize);
     }
   }
 

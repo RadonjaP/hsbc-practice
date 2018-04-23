@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee }  from '../../models/employee';
 import { TableHeader } from '../../models/table-header';
 import { FilterField } from '../../models/filter-field';
+import { Http, HttpModule } from '@angular/http';
 
 @Component({
   selector: 'app-employee-table',
@@ -27,7 +28,7 @@ export class EmployeeTableComponent implements OnInit {
   ]
   public employees : Employee[]
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService, private http: Http) {
   }
 
   ngOnInit() {
@@ -37,6 +38,12 @@ export class EmployeeTableComponent implements OnInit {
   public selectRowImplementation($event) {
     let employee = $event.row;
     console.log("Employee selected: " + employee.name + " " + employee.lastname);
+  }
+
+  public importCsvData() {
+      this.employeeService.setDataCsv(this.http).subscribe(data => {
+        this.employees = data;
+      });
   }
 
 }
