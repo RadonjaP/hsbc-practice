@@ -8,7 +8,7 @@ import { Http, HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
 import { TableDataComponent } from './components/table-data/table-data.component';
-import { TableFormatterPipe } from './pipes/table-format.pipe';
+import { EmployeeTableFormatter } from './pipes/employee-table-format.pipe';
 import { PaginationComponentComponent } from './components/table-data/pagination-component/pagination-component.component';
 import { FilterComponentComponent } from './components/table-data/filter-component/filter-component.component';
 import { ImportDataComponent } from './components/import-data/import-data.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
     AppComponent,
     EmployeeTableComponent,
     TableDataComponent,
-    TableFormatterPipe,
+    EmployeeTableFormatter,
     PaginationComponentComponent,
     FilterComponentComponent,
     ImportDataComponent
@@ -38,7 +38,7 @@ const routes: Routes = [
       routes
     )
   ],
-  exports: [TableFormatterPipe],
+  exports: [EmployeeTableFormatter],
   providers: [],
   bootstrap: [AppComponent]
 })

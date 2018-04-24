@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform} from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-@Pipe({ name: 'tableFormatter'})
-export class TableFormatterPipe implements PipeTransform {
+@Pipe({ name: 'employeeTableFormatter'})
+export class EmployeeTableFormatter implements PipeTransform {
   transform(value: any, col:string) {
     if (value === undefined) {
       return '';

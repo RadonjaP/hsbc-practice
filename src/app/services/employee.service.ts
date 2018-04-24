@@ -5,6 +5,7 @@ import { Employee } from '../models/employee';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first'
+import { EmployeeTableFormatter } from '../pipes/employee-table-format.pipe';
 
 Injectable()
 export class EmployeeService {
@@ -33,10 +34,10 @@ export class EmployeeService {
   }
 
   // Parse data in csv format to array of Employee Objects
-  public processData(data: any) {
+  private processData(data: any) {
     let employees = data.split("\n");
     let tempEmployees = new Array<Employee>();
-    for (let i = 0; i < employees.length; i++) {
+    for (let i = 0; i < employees.length - 1; i++) {
       let emp = new Employee();
       var properties = employees[i].split(",");
       emp.id = Number(properties[0]);

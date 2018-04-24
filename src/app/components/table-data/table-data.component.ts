@@ -28,7 +28,7 @@ export class TableDataComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.displaySize != undefined) {
+    if (this.displaySize != undefined && this.pagination) {
       this.displayedData = this.data.slice(0, this.displaySize);
     } else {
       this.displaySize = this.data.length;
