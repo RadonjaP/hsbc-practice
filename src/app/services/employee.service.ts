@@ -5,7 +5,6 @@ import { Employee } from '../models/employee';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first'
-import { EmployeeTableFormatter } from '../pipes/employee-table-format.pipe';
 
 Injectable()
 export class EmployeeService {

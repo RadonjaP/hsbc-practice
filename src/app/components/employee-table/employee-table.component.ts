@@ -4,13 +4,13 @@ import { Employee }  from '../../models/employee';
 import { TableHeader } from '../../models/table-header';
 import { FilterField } from '../../models/filter-field';
 import { Http, HttpModule } from '@angular/http';
-import { EmployeeTableFormatter } from '../../pipes/employee-table-format.pipe';
 
 @Component({
   selector: 'app-employee-table',
   templateUrl: './employee-table.component.html',
   styleUrls: [],
-  providers: [EmployeeService, EmployeeTableFormatter]
+  providers: [EmployeeService]
+  
 })
 export class EmployeeTableComponent implements OnInit {
 
@@ -31,12 +31,11 @@ export class EmployeeTableComponent implements OnInit {
 
   public employees : Employee[]
 
-  constructor(private employeePipe: EmployeeTableFormatter, private employeeService: EmployeeService, private http: Http) {
+  constructor(private employeeService: EmployeeService, private http: Http) {
   }
 
   ngOnInit() {
     this.employees = this.employeeService.getData();
-    this.formatData();
   }
 
   public selectRowImplementation($event) {
@@ -47,15 +46,7 @@ export class EmployeeTableComponent implements OnInit {
   public importCsvData() {
       this.employeeService.setDataCsv(this.http).subscribe(data => {
         this.employees = data;
-        this.formatData();
       });
-  }
-
-  public formatData() {
-    for (let emp of this.employees) {
-      emp.salary = this.employeePipe.transform(emp.salary, 'salary');
-      emp.birthDate = this.employeePipe.transform(emp.birthDate, 'birthDate');
-    }
   }
 
 }
