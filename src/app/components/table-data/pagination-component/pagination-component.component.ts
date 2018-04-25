@@ -9,7 +9,7 @@ export class PaginationComponentComponent implements OnInit {
 
   @Input() public data: any[];
   @Input() public displaySize: number;
-  
+
   public index: number;
   public numberOfPages: number;
 
@@ -18,8 +18,15 @@ export class PaginationComponentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.numberOfPages = Math.ceil(this.data.length / this.displaySize);
     this.index = 1;
+    this.numberOfPages = this.findNumberOfPages();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (!changes.data.firstChange) {
+      this.index = 1;
+      this.numberOfPages = this.findNumberOfPages();
+    }
   }
 
   public changePage() {
@@ -50,6 +57,10 @@ export class PaginationComponentComponent implements OnInit {
   public toEnd() {
     this.index = this.numberOfPages;
     this.changeIndexEvent.emit({index: this.index, displaySize: this.displaySize});
+  }
+
+  public findNumberOfPages() {
+    return Math.ceil(this.data.length / this.displaySize);
   }
 
 }

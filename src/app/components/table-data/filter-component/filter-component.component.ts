@@ -23,19 +23,14 @@ export class FilterComponentComponent implements OnInit {
 
   public filterData() {
     let filteredData = this.originalData;
-    let clearFilter = true;
     for (let field of this.fields) {
       if(field.value != undefined && field.value != '')  {
-        clearFilter = false;
         filteredData = filteredData.filter(data =>
           data[field.id] == field.value);
       }
     }
+    this.originalData = this.data;
     this.filterDataEvent.emit({'filteredData': filteredData});
-  }
-
-  public setOriginalData(data: any[]) {
-    this.originalData = data;
   }
 
 }

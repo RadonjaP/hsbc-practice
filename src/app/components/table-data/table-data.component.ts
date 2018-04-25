@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChil
 import { TableHeader } from '../../models/table-header';
 import { FilterField } from '../../models/filter-field';
 import { FilterComponentComponent } from './filter-component/filter-component.component';
+import { PaginationComponentComponent } from './pagination-component/pagination-component.component'
 
 @Component({
   selector: 'app-table-data',
@@ -22,6 +23,8 @@ export class TableDataComponent implements OnInit {
 
   @ViewChild(FilterComponentComponent)
   private filterComponent: FilterComponentComponent;
+  @ViewChild(PaginationComponentComponent)
+  private paginationComponent: PaginationComponentComponent;
 
   @Output() private clickRowEvent = new EventEmitter<any>();
 
@@ -40,7 +43,6 @@ export class TableDataComponent implements OnInit {
     if (!changes.data.firstChange) {
       this.data = changes.data.currentValue;
       this.displayedData = this.data.slice(0, this.displaySize);
-      this.filterComponent.setOriginalData(this.data);
     }
   }
 
@@ -82,6 +84,10 @@ export class TableDataComponent implements OnInit {
   public filterData($event) {
     this.data = $event.filteredData;
     this.displayedData = this.data.slice(0, this.displaySize);
+  }
+
+  public findNumberOfPages() {
+    return Math.round(this.data.length / this.displaySize);
   }
 
 }
