@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild } from '@angular/core';
 import { TableHeader } from '../../models/table-header';
 import { FilterField } from '../../models/filter-field';
-import { FilterComponentComponent } from './filter-component/filter-component.component';
-import { PaginationComponentComponent } from './pagination-component/pagination-component.component'
 
 @Component({
   selector: 'app-table-data',
@@ -20,11 +18,6 @@ export class TableDataComponent implements OnInit {
   @Input() private filterFields: FilterField[];
 
   private displayedData: any[];
-
-  @ViewChild(FilterComponentComponent)
-  private filterComponent: FilterComponentComponent;
-  @ViewChild(PaginationComponentComponent)
-  private paginationComponent: PaginationComponentComponent;
 
   @Output() private clickRowEvent = new EventEmitter<any>();
 
