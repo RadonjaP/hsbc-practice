@@ -25,12 +25,17 @@ export class FilterComponentComponent implements OnInit {
     let filteredData = this.originalData;
     for (let field of this.fields) {
       if(field.value != undefined && field.value != '')  {
-        filteredData = filteredData.filter(data =>
-          data[field.id] == field.value);
+        filteredData = filteredData.filter(data => {
+          return this.matchValue(data[field.id], field.value)
+        });
       }
     }
     this.originalData = this.data;
     this.filterDataEvent.emit({'filteredData': filteredData});
+  }
+
+  private matchValue(val1: any, val2: any) {
+    return String(val1).toLowerCase().includes(val2.toLowerCase());
   }
 
 }
