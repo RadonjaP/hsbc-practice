@@ -21,6 +21,13 @@ export class FilterComponentComponent implements OnInit {
     this.originalData = this.data;
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    // Keep original data
+    if (!changes.data.firstChange) {
+      this.data = this.originalData;
+    }
+  }
+
   public filterData() {
     let filteredData = this.originalData;
     for (let field of this.fields) {
@@ -30,7 +37,6 @@ export class FilterComponentComponent implements OnInit {
         });
       }
     }
-    this.originalData = this.data;
     this.filterDataEvent.emit({'filteredData': filteredData});
   }
 

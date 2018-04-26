@@ -63,7 +63,6 @@ export class TableDataComponent implements OnInit {
     } else {
       return 'glyphicon glyphicon-chevron-up';
     }
-
   }
 
   // Activated on pagination component
@@ -75,6 +74,8 @@ export class TableDataComponent implements OnInit {
 
   // Activated on filter component
   public filterData($event) {
+    // We change original data
+    // but we kept it in filter component
     this.data = $event.filteredData;
     this.displayedData = this.data.slice(0, this.displaySize);
   }
