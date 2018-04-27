@@ -10,6 +10,7 @@ export class FilterComponentComponent implements OnInit {
 
   @Input() private fields: FilterField[];
   @Input() private data: any[];
+  @Input() private changedData: boolean;
 
   private originalData: any[];
 
@@ -22,6 +23,10 @@ export class FilterComponentComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    // If model data is changed, then change original data
+    if (changes.changedData) {
+      this.originalData = changes.data.currentValue;
+    }
     // Keep original data
     if (!changes.data.firstChange) {
       this.data = this.originalData;

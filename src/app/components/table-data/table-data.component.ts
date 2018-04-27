@@ -18,6 +18,7 @@ export class TableDataComponent implements OnInit {
   @Input() private filterFields: FilterField[];
 
   private displayedData: any[];
+  private changedData = false; // Used as flag to mark update of model data
 
   @Output() private clickRowEvent = new EventEmitter<any>();
 
@@ -34,6 +35,7 @@ export class TableDataComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (!changes.data.firstChange) {
+      this.changedData = true;
       this.data = changes.data.currentValue;
       this.displayedData = this.data.slice(0, this.displaySize);
     }
