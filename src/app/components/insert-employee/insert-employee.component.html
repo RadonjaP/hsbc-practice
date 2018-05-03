@@ -1,0 +1,14 @@
+<form class="insert-container">
+  <label for="name"> Name: </label>
+  <input type="text" [(ngModel)]="emp.name" name="name" required>
+  <label for="lastname"> Lastname: </label>
+  <input type="text" [(ngModel)]="emp.lastname" name="lastname" required>
+  <label for="birthDate"> Birth date: </label>
+  <input type="date" [(ngModel)]="emp.birthDate" name="birthDate" required>
+  <label for="job"> Job: </label>
+  <input type="text" [(ngModel)]="emp.job" name="job" required>
+  <label for="salary"> Salary: </label>
+  <input type="number" [(ngModel)]="emp.salary" name="salary" required>
+  <br>
+  <input type="submit" (click)="insertEmployee()" class="btn btn-success" value="Insert">
+</form>

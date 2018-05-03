@@ -1,0 +1,19 @@
+input {
+  border-radius: 5px;
+  border-style: outset;
+  display: inline-block;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.insert-container {
+  position: relative;
+  text-align: left;
+  padding-left: 10px;
+  border-style: outset;
+  border-radius: 5%;
+  height: 100%;
+  top: -100px;
+  left: 0px;
+  margin-right: 50px;
+}
