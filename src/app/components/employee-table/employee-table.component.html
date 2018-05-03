@@ -1,16 +1,19 @@
-<div style="margin-left: 5%; margin-right: 5%">
-  <app-table-data
-    [tableName]="'Employee table'"
-    [data]="employees"
-    [headers]="headers"
-    [filter]="true"
-    [filterFields] = "filterFields"
-    [pagination]="true"
-    [displaySize]="10"
-    (clickRowEvent)="selectRowImplementation($event)"
-  >
-  </app-table-data>
-
+<div style="margin-left: 5%; margin-right: 5%;">
+  <div class="insert-container">
+    <app-insert-employee class="insert-container-component"
+      style="width: 20%; margin-right:5px;"> </app-insert-employee>
+    <app-table-data class="insert-container-component" style="width: 75%;"
+      [tableName]="'Employee table'"
+      [data]="employees"
+      [headers]="headers"
+      [filter]="true"
+      [filterFields] = "filterFields"
+      [pagination]="false"
+      [displaySize]="10"
+      (clickRowEvent)="selectRowImplementation($event)"
+    >
+    </app-table-data>
+  <div>
   <div class="modal-dialog">
 
     <!-- Modal content-->

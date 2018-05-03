@@ -12,6 +12,7 @@ import { TableFormatter } from './pipes/table-format.pipe';
 import { PaginationComponentComponent } from './components/table-data/pagination-component/pagination-component.component';
 import { FilterComponentComponent } from './components/table-data/filter-component/filter-component.component';
 import { ImportDataComponent } from './components/import-data/import-data.component';
+import { InsertEmployeeComponent } from './components/insert-employee/insert-employee.component';
 
 const routes: Routes = [
   {path: 'table', component: EmployeeTableComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
     TableFormatter,
     PaginationComponentComponent,
     FilterComponentComponent,
-    ImportDataComponent
+    ImportDataComponent,
+    InsertEmployeeComponent
   ],
   imports: [
     BrowserModule,
