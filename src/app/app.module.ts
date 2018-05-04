@@ -13,6 +13,7 @@ import { PaginationComponentComponent } from './components/table-data/pagination
 import { FilterComponentComponent } from './components/table-data/filter-component/filter-component.component';
 import { ImportDataComponent } from './components/import-data/import-data.component';
 import { InsertEmployeeComponent } from './components/insert-employee/insert-employee.component';
+import { EmployeeService } from './services/employee.service';
 
 const routes: Routes = [
   {path: 'table', component: EmployeeTableComponent},
@@ -41,7 +42,7 @@ const routes: Routes = [
     )
   ],
   exports: [TableFormatter],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

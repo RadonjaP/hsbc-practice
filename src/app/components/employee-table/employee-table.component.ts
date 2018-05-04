@@ -1,16 +1,16 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
 import { Employee }  from '../../models/employee';
 import { TableHeader } from '../../models/table-header';
 import { FilterField } from '../../models/filter-field';
 import { Http, HttpModule } from '@angular/http';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-employee-table',
   templateUrl: './employee-table.component.html',
-  styleUrls: [],
-  providers: [EmployeeService]
-  
+  styleUrls: ['./employee-table.style.css'],
+  providers: []
+
 })
 export class EmployeeTableComponent implements OnInit {
 
@@ -31,11 +31,12 @@ export class EmployeeTableComponent implements OnInit {
 
   public employees : Employee[]
 
-  constructor(private employeeService: EmployeeService, private http: Http) {
+  constructor(public employeeService: EmployeeService, private http: Http) {
   }
 
   ngOnInit() {
     this.employees = this.employeeService.getData();
+    this.employeeService.dataSource.subscribe(employees => this.employees = employees);
   }
 
   public selectRowImplementation($event) {
@@ -44,9 +45,7 @@ export class EmployeeTableComponent implements OnInit {
   }
 
   public importCsvData() {
-      this.employeeService.setDataCsv(this.http).subscribe(data => {
-        this.employees = data;
-      });
+      this.employeeService.setDataCsv(this.http);
   }
 
 }

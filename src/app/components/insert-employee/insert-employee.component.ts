@@ -6,18 +6,15 @@ import { EmployeeService } from '../../services/employee.service';
   selector: 'app-insert-employee',
   templateUrl: './insert-employee.component.html',
   styleUrls: ['./insert-employee.component.css'],
-  providers: [EmployeeService]
+  providers: []
 })
 export class InsertEmployeeComponent implements OnInit {
 
   public emp = new Employee();
-  employees = [];
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(public employeeService: EmployeeService) {}
 
-  ngOnInit() {
-    this.employeeService.employees.subscribe(employees => this.employees = employees);
-  }
+  ngOnInit() {}
 
   public insertEmployee() {
     this.employeeService.insertEmployee(this.emp);
