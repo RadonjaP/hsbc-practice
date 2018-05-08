@@ -10,20 +10,12 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 Injectable()
 export class EmployeeService {
 
-  private employees = [];
-  public dataSource = new BehaviorSubject(this.employees);
+  private employees = new Array<Employee>();
+  public dataSource;
 
   constructor() {
     this.employees = EMPLOYEES;
     this.dataSource = new BehaviorSubject(this.employees);
-  }
-
-  public getData() {
-    return this.employees;
-  }
-
-  public setData(employees: Employee[]) {
-      this.employees = employees;
   }
 
   public setDataCsv(http: Http) {
@@ -41,8 +33,11 @@ export class EmployeeService {
 
   public insertEmployee(employee: Employee) {
     employee.id = this.getEmployeeId();
+    let results = [];
+    this.employees.map(employee => results.push(employee));
+    results.push(employee);
+    this.dataSource.next(results);
     this.employees.push(employee);
-    this.dataSource.next(this.employees);
   }
 
   private getEmployeeId() {
@@ -64,8 +59,15 @@ export class EmployeeService {
       emp.salary = Number(properties[5]);
       tempEmployees.push(emp);
     }
-
     return tempEmployees;
+  }
+
+  public getData() {
+    return this.employees;
+  }
+
+  public setData(employees: Employee[]) {
+      this.employees = employees;
   }
 
 }

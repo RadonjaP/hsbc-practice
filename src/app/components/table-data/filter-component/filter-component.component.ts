@@ -10,31 +10,27 @@ export class FilterComponentComponent implements OnInit {
 
   @Input() private fields: FilterField[];
   @Input() private data: any[];
-  @Input() private changedData: boolean;
+  @Input() private filterChange: boolean;
 
-  private originalData: any[];
+  private originalData = new Array<any>();
 
   @Output() filterDataEvent = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
-    this.originalData = this.data;
+    this.data.map(entry => this.originalData.push(entry));
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // If model data is changed, then change original data
-    if (changes.changedData) {
+    if (!this.filterChange && !changes.data.isFirstChange()) {
       this.originalData = changes.data.currentValue;
-    }
-    // Keep original data
-    if (!changes.data.firstChange) {
-      this.data = this.originalData;
     }
   }
 
   public filterData() {
-    let filteredData = this.originalData;
+    let filteredData = [];
+    this.originalData.map(res => filteredData.push(res));
     for (let field of this.fields) {
       if(field.value != undefined && field.value != '')  {
         filteredData = filteredData.filter(data => {

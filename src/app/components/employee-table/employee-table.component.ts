@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Employee }  from '../../models/employee';
 import { TableHeader } from '../../models/table-header';
 import { FilterField } from '../../models/filter-field';
@@ -10,8 +10,8 @@ import { EmployeeService } from '../../services/employee.service';
   templateUrl: './employee-table.component.html',
   styleUrls: ['./employee-table.style.css'],
   providers: []
-
 })
+
 export class EmployeeTableComponent implements OnInit {
 
   public headers = [
@@ -35,8 +35,9 @@ export class EmployeeTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.employees = this.employeeService.getData();
-    this.employeeService.dataSource.subscribe(employees => this.employees = employees);
+    this.employeeService.dataSource.subscribe(employees => {
+      this.employees = employees;
+    });
   }
 
   public selectRowImplementation($event) {

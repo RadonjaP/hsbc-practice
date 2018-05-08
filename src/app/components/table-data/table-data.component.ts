@@ -17,8 +17,9 @@ export class TableDataComponent implements OnInit {
   @Input() private filter: boolean;
   @Input() private filterFields: FilterField[];
 
+  public filterChange = false;
   private displayedData: any[];
-  private changedData = false; // Used as flag to mark update of model data
+
 
   @Output() private clickRowEvent = new EventEmitter<any>();
 
@@ -35,9 +36,9 @@ export class TableDataComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (!changes.data.firstChange) {
-      this.changedData = true;
       this.data = changes.data.currentValue;
       this.displayedData = this.data.slice(0, this.displaySize);
+      this.filterChange = false;
     }
   }
 
@@ -76,14 +77,9 @@ export class TableDataComponent implements OnInit {
 
   // Activated on filter component
   public filterData($event) {
-    // We change original data
-    // but we kept it in filter component
+    this.filterChange = true;
     this.data = $event.filteredData;
     this.displayedData = this.data.slice(0, this.displaySize);
-  }
-
-  public findNumberOfPages() {
-    return Math.round(this.data.length / this.displaySize);
   }
 
 }

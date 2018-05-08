@@ -30,22 +30,22 @@ export class PaginationComponentComponent implements OnInit {
   }
 
   public changePage() {
-    if (this.index >= 1 && this.index <= this.numberOfPages) {
-      this.changeIndexEvent.emit({ index: this.index, displaySize: this.displaySize});
+    if (this.index < 1) {
+      this.index = 1;
     }
-  }
-
-  public nextPage() {
-    if (this.index < this.numberOfPages) {
-      this.index++;
+    if (this.index > this.numberOfPages) {
+      this.index = this.numberOfPages;
     }
     this.changeIndexEvent.emit({index: this.index, displaySize: this.displaySize});
   }
 
+  public nextPage() {
+    this.index = this.index < this.numberOfPages? ++this.index : this.numberOfPages;
+    this.changeIndexEvent.emit({index: this.index, displaySize: this.displaySize});
+  }
+
   public previousPage() {
-    if (this.index > 1) {
-      this.index--;
-    }
+    this.index = this.index > 1? --this.index : 1;
     this.changeIndexEvent.emit({index: this.index, displaySize: this.displaySize});
   }
 

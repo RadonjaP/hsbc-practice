@@ -1,6 +1,6 @@
 <div style="text-align: center;">
   <h2> {{tableName}} </h2>
-  <filter-component *ngIf="filter" (filterDataEvent)="filterData($event)" [fields]="filterFields" [data]="data" [changedData]="changedData"> </filter-component>
+  <filter-component *ngIf="filter" (filterDataEvent)="filterData($event)" [fields]="filterFields" [filterChange]="filterChange" [data]="data"> </filter-component>
   <div id="table-container">
     <table class="table">
       <!-- Create headers -->

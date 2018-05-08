@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, EventEmitter, Output, Input } from '@angular/core';
 import { Employee }  from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
 
@@ -14,16 +14,26 @@ export class InsertEmployeeComponent implements OnInit {
 
   constructor(public employeeService: EmployeeService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setEmp();
+  }
 
   public insertEmployee() {
     this.employeeService.insertEmployee(this.emp);
     this.printData();
     this.emp = new Employee();
+    this.setEmp();
   }
 
   private printData() {
-    console.log('Inserted: ' + this.emp.name + ' ' + this.emp.lastname + ' ' + this.emp.birthDate);
+    console.log('Inserted: ' + this.emp.name + ' ' + this.emp.lastname + ' ' + this.emp.job);
+  }
+
+  private setEmp() {
+    this.emp.name = "Radonja";
+    this.emp.lastname = "Prelevic";
+    this.emp.job = "Developer";
+    this.emp.salary = 41000;
   }
 
 }
