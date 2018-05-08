@@ -6,9 +6,12 @@
       <!-- Create headers -->
       <thead>
         <tr>
-          <th (click)="sortHeader(header)" scope="col" style="text-align: center" *ngFor="let header of headers">
+          <th class="custom-header" (click)="sortHeader(header)" scope="col" style="text-align: center" *ngFor="let header of headers">
             {{header.name}}
             <span [ngClass]="getGlyphicon(header)"> </span>
+          </th>
+          <!-- trash glyphicon header -->
+          <th>
           </th>
         </tr>
       </thead>
@@ -18,6 +21,7 @@
           <td *ngFor="let header of headers">
             {{row[header.id] | tableFormatter: header.id}}
           </td>
+          <td> <span class="glyphicon glyphicon-trash" (click)="removeData(row)"> </span> </td>
         </tr>
       </tbody>
     </table>

@@ -1,10 +1,10 @@
-th {
-  background-color: #ff9999;
-}
-
-th:hover {
+.custom-header:hover {
   background-color: #e6e6e6;
   cursor: grab;
+}
+
+th {
+  background-color: #ff9999;
 }
 
 tr {

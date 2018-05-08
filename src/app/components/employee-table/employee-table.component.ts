@@ -45,6 +45,11 @@ export class EmployeeTableComponent implements OnInit {
     console.log("Employee selected: " + employee.name + " " + employee.lastname);
   }
 
+  public removeRowImplementation($event) {
+    let employee = $event.row;
+    this.employeeService.removeEmployee(employee);  
+  }
+
   public importCsvData() {
       this.employeeService.setDataCsv(this.http);
   }

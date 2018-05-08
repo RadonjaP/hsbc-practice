@@ -10,10 +10,12 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 Injectable()
 export class EmployeeService {
 
+  private newId: number;
   private employees = new Array<Employee>();
   public dataSource;
 
   constructor() {
+    this.newId = EMPLOYEES.length;
     this.employees = EMPLOYEES;
     this.dataSource = new BehaviorSubject(this.employees);
   }
@@ -40,8 +42,14 @@ export class EmployeeService {
     this.employees.push(employee);
   }
 
+  public removeEmployee(employee: Employee) {
+    let results = this.employees.filter(emp => employee.id != emp.id);
+    this.employees = results;
+    this.dataSource.next(results);
+  }
+
   private getEmployeeId() {
-    return this.employees.length + 1;
+    return ++this.newId;
   }
 
   // Parse data in csv format to array of Employee Objects

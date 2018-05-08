@@ -22,6 +22,7 @@ export class TableDataComponent implements OnInit {
 
 
   @Output() private clickRowEvent = new EventEmitter<any>();
+  @Output() private removeRowEvent = new EventEmitter<any>();
 
   constructor() { }
 
@@ -45,6 +46,10 @@ export class TableDataComponent implements OnInit {
   // Select row to process
   public selectRow(row) {
     this.clickRowEvent.emit({'row': row});
+  }
+
+  public removeData(row) {
+    this.removeRowEvent.emit({'row':row});
   }
 
   // Used to sort data by header

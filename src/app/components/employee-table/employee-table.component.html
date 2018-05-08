@@ -14,21 +14,21 @@
       [pagination]="true"
       [displaySize]="10"
       (clickRowEvent)="selectRowImplementation($event)"
+      (removeRowEvent)="removeRowImplementation($event)"
     >
     </app-table-data>
   <div>
   <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Import csv data</h4>
-      </div>
-      <div class="modal-body">
-        <input type="button" class="btn btn-success" (click)="importCsvData()" value="Import"/>
-      </div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Import csv data</h4>
     </div>
+    <div class="modal-body">
+      <input type="button" class="btn btn-success" (click)="importCsvData()" value="Import"/>
+    </div>
+  </div>
 
   </div>
 </div>
