@@ -56,21 +56,18 @@ export class TableDataComponent implements OnInit {
   public sortHeader(header: TableHeader) {
     var id = header.id;
     var desc = header.sortDirection;
-    this.displayedData.sort(function(a, b) {
+    this.data.sort(function(a, b) {
       let value = a[id] < b[id] ? 1 : a[id] > b[id] ? -1 : 0;
       // Change sort to opposite direction
       return value * desc;
     });
     header.changeDirection();
+    this.displayedData = this.data.slice(0, this.displaySize);
   }
 
   // Switch between header's glyphicons
   public getGlyphicon(header: TableHeader) {
-    if (header.sortDirection == -1) {
-      return 'glyphicon glyphicon-chevron-down';
-    } else {
-      return 'glyphicon glyphicon-chevron-up';
-    }
+    return header.sortDirection == -1? 'glyphicon glyphicon-chevron-down':'glyphicon glyphicon-chevron-up';
   }
 
   // Activated on pagination component
