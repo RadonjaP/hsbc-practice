@@ -4,13 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule } from '@angular/http';
+import { DataTableModule } from 'cust-component-library';
 
 import { AppComponent } from './app.component';
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
-import { TableDataComponent } from './components/table-data/table-data.component';
-import { TableFormatter } from './pipes/table-format.pipe';
-import { PaginationComponentComponent } from './components/table-data/pagination-component/pagination-component.component';
-import { FilterComponentComponent } from './components/table-data/filter-component/filter-component.component';
 import { ImportDataComponent } from './components/import-data/import-data.component';
 import { InsertEmployeeComponent } from './components/insert-employee/insert-employee.component';
 import { EmployeeService } from './services/employee.service';
@@ -25,10 +22,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     EmployeeTableComponent,
-    TableDataComponent,
-    TableFormatter,
-    PaginationComponentComponent,
-    FilterComponentComponent,
     ImportDataComponent,
     InsertEmployeeComponent
   ],
@@ -37,11 +30,11 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     HttpModule,
+    DataTableModule,
     RouterModule.forRoot(
       routes
     )
   ],
-  exports: [TableFormatter],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
