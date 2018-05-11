@@ -47,7 +47,12 @@ export class EmployeeTableComponent implements OnInit {
 
   public removeRowImplementation($event) {
     let employee = $event.row;
-    this.employeeService.removeEmployee(employee);  
+    this.employeeService.removeEmployee(employee);
+  }
+
+  public modifyRowImplementation($event) {
+    let employee = $event.row;
+    console.log("Employee modify: " + employee.name + " " + employee.lastname);
   }
 
   public importCsvData() {

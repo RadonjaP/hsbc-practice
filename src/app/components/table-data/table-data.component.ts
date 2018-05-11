@@ -23,6 +23,7 @@ export class TableDataComponent implements OnInit {
 
   @Output() private clickRowEvent = new EventEmitter<any>();
   @Output() private removeRowEvent = new EventEmitter<any>();
+  @Output() private modifyRowEvent = new EventEmitter<any>();
 
   constructor() { }
 
@@ -50,6 +51,10 @@ export class TableDataComponent implements OnInit {
 
   public removeData(row) {
     this.removeRowEvent.emit({'row':row});
+  }
+
+  public modifyData(row) {
+    this.modifyRowEvent.emit({'row': row});
   }
 
   // Used to sort data by header

@@ -48,6 +48,10 @@ export class EmployeeService {
     this.dataSource.next(results);
   }
 
+  public modifyEmployee(employee: Employee) {
+    
+  }
+
   private getEmployeeId() {
     return ++this.newId;
   }

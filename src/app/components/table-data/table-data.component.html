@@ -10,6 +10,9 @@
             {{header.name}}
             <span [ngClass]="getGlyphicon(header)"> </span>
           </th>
+          <!-- modify glyphicon header -->
+          <th>
+          </th>
           <!-- trash glyphicon header -->
           <th>
           </th>
@@ -21,6 +24,7 @@
           <td *ngFor="let header of headers">
             {{row[header.id] | tableFormatter: header.id}}
           </td>
+          <td> <span class="glyphicon glyphicon-pencil" (click)="modifyData(row)"> </span> </td>
           <td> <span class="glyphicon glyphicon-trash" (click)="removeData(row)"> </span> </td>
         </tr>
       </tbody>
