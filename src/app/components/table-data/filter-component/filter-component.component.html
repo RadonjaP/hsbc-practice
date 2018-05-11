@@ -1,0 +1,7 @@
+<div id="filter-container" >
+  <div id="filter-field" *ngFor="let field of fields">
+    <label for="field.id"> {{field.name}} </label>
+    <input type="text" [(ngModel)]="field.value" name="{{field.id}}"/>
+  </div>
+  <input style="float:right" type="button" class="btn btn-info" value="Filter" (click)="filterData()"/>
+</div>

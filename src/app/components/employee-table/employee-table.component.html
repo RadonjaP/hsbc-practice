@@ -1,4 +1,36 @@
-<div style="margin-left: 5%; margin-right: 5%">
-  <app-table-data [tableName]="'Employee table'" [data]="employees" [headers]="headers" >
-  </app-table-data>
+<div style="margin-left: 5%; margin-right: 5%;">
+  <div class="insert-container">
+    <!-- Insert component -->
+    <app-insert-employee
+      class="insert-container-component"
+      style="width: 20%; margin-right:5px;"
+    >
+    </app-insert-employee>
+    <!-- Table -->
+    <app-table-data class="insert-container-component" style="width: 75%;"
+      [tableName]="'Employee table'"
+      [data]="employees"
+      [headers]="headers"
+      [filter]="true"
+      [filterFields] = "filterFields"
+      [pagination]="true"
+      [displaySize]="10"
+      (clickRowEvent)="selectRowImplementation($event)"
+      (removeRowEvent)="removeRowImplementation($event)"
+      (modifyRowEvent)="modifyRowImplementation($event)"
+    >
+    </app-table-data>
+  <div>
+  <!-- Csv import template -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Import csv data</h4>
+      </div>
+      <div class="modal-body">
+        <input type="button" class="btn btn-success" (click)="importCsvData()" value="Import"/>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild } from '@angular/core';
 import { TableHeader } from '../../models/table-header';
+import { FilterField } from '../../models/filter-field';
 
 @Component({
   selector: 'app-table-data',
@@ -9,20 +10,54 @@ import { TableHeader } from '../../models/table-header';
 export class TableDataComponent implements OnInit {
 
   @Input() private tableName: string;
-  @Input() private data: any;
+  @Input() private data: any[];
   @Input() private headers: TableHeader[];
+  @Input() private displaySize: number;
+  @Input() private pagination: boolean;
+  @Input() private filter: boolean;
+  @Input() private filterFields: FilterField[];
 
-  public descend = false;
+  public filterChange = false;
+  private displayedData: any[];
+
+
+  @Output() private clickRowEvent = new EventEmitter<any>();
+  @Output() private removeRowEvent = new EventEmitter<any>();
+  @Output() private modifyRowEvent = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
+    if (this.displaySize != undefined && this.pagination) {
+      this.displayedData = this.data.slice(0, this.displaySize);
+    } else {
+      this.displaySize = this.data.length;
+      this.displayedData = this.data;
+    }
   }
 
-  public selectRow(target) {
-    console.log("selectRow() --> ")
+  ngOnChanges(changes: SimpleChanges) {
+    if (!changes.data.firstChange) {
+      this.data = changes.data.currentValue;
+      this.displayedData = this.data.slice(0, this.displaySize);
+      this.filterChange = false;
+    }
   }
 
+  // Select row to process
+  public selectRow(row) {
+    this.clickRowEvent.emit({'row': row});
+  }
+
+  public removeData(row) {
+    this.removeRowEvent.emit({'row':row});
+  }
+
+  public modifyData(row) {
+    this.modifyRowEvent.emit({'row': row});
+  }
+
+  // Used to sort data by header
   public sortHeader(header: TableHeader) {
     var id = header.id;
     var desc = header.sortDirection;
@@ -32,16 +67,26 @@ export class TableDataComponent implements OnInit {
       return value * desc;
     });
     header.changeDirection();
+    this.displayedData = this.data.slice(0, this.displaySize);
   }
 
+  // Switch between header's glyphicons
   public getGlyphicon(header: TableHeader) {
-    if (header.sortDirection == -1) {
-      return 'glyphicon glyphicon-chevron-down';
-    } else {
-      return 'glyphicon glyphicon-chevron-up';
-    }
-
+    return header.sortDirection == -1? 'glyphicon glyphicon-chevron-down':'glyphicon glyphicon-chevron-up';
   }
 
+  // Activated on pagination component
+  public switchPage($event) {
+    let end = $event.index * $event.displaySize;
+    let start = end - $event.displaySize;
+    this.displayedData = this.data.slice(start, end);
+  }
+
+  // Activated on filter component
+  public filterData($event) {
+    this.filterChange = true;
+    this.data = $event.filteredData;
+    this.displayedData = this.data.slice(0, this.displaySize);
+  }
 
 }

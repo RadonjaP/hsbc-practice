@@ -2,13 +2,13 @@ import { Pipe, PipeTransform} from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 @Pipe({ name: 'tableFormatter'})
-export class TableFormatterPipe implements PipeTransform {
+export class TableFormatter implements PipeTransform {
   transform(value: any, col:string) {
     if (value === undefined) {
       return '';
     }
     if (col === 'salary') {
-      return value + ' £';
+      return '£ ' + value;
     } else if (col === 'birthDate') {
       let pipe = new DatePipe('en-UK');
       return pipe.transform(value, 'dd/MM/yyyy');

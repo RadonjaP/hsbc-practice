@@ -1,0 +1,8 @@
+.insert-container {
+  position: relative;
+  width: 100%;
+}
+
+.insert-container-component {
+  display:inline-block;
+}
