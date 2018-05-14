@@ -1,10 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Employee }  from '../../models/employee';
-import { DataTableModule } from 'cust-component-library';
 import { Http, HttpModule } from '@angular/http';
 import { EmployeeService } from '../../services/employee.service';
-import { TableHeader } from 'cust-component-library/src/app/modules/models/table-header';
-import { FilterField } from 'cust-component-library/src/app/modules/models/filter-field';
+import { TableHeader, FilterField } from 'cust-component-library';
 
 @Component({
   selector: 'app-employee-table',
