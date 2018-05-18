@@ -1,4 +1,4 @@
-<div style="margin-left: 5%; margin-right: 5%;">
+<div class="main-container">
   <div class="insert-container">
     <!-- Insert component -->
     <app-insert-employee
@@ -7,7 +7,7 @@
     >
     </app-insert-employee>
     <!-- Table -->
-    <app-table-data class="insert-container-component" style="width: 75%;"
+    <data-table class="insert-container-component" style="width: 75%;"
       [tableName]="'Employee table'"
       [data]="employees"
       [headers]="headers"
@@ -19,7 +19,7 @@
       (removeRowEvent)="removeRowImplementation($event)"
       (modifyRowEvent)="modifyRowImplementation($event)"
     >
-    </app-table-data>
+  </data-table>
   <div>
   <!-- Csv import template -->
   <div class="modal-dialog">

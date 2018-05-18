@@ -1,14 +1,13 @@
 import { Component, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Employee }  from '../../models/employee';
-import { TableHeader } from '../../models/table-header';
-import { FilterField } from '../../models/filter-field';
 import { Http, HttpModule } from '@angular/http';
 import { EmployeeService } from '../../services/employee.service';
+import { TableHeader, FilterField } from 'cust-component-library';
 
 @Component({
   selector: 'app-employee-table',
   templateUrl: './employee-table.component.html',
-  styleUrls: ['./employee-table.style.css'],
+  styleUrls: ['./employee-table.style.css', '../../app.component.css'],
   providers: []
 })
 

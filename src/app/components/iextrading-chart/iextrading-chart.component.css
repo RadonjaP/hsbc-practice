@@ -1,0 +1,59 @@
+.change-minus {
+  background-color: #ffb3b3;
+}
+
+.change-plus {
+  background-color: #b3ffb3;
+}
+
+.custom-header:hover {
+  background-color: #e6e6e6;
+  cursor: grab;
+}
+
+th {
+  text-align: center;
+  background-color: #ff9999;
+}
+
+td {
+  text-align: center;
+}
+
+tr {
+  cursor: default;
+}
+
+tr:hover {
+  background-color: #e6e6e6;
+}
+
+#table-container {
+  overflow-y: scroll;
+  height: 450px;
+}
+
+.select-container {
+  border-radius: 10px;
+  margin-bottom: 0px;
+  width: 25%;
+  float:left;
+  display:inline;
+}
+
+.select-container select {
+  border-radius: 9px;
+  margin-bottom:5px;
+  width: 100%;
+}
+
+.select-container input {
+  margin-top:5px;
+  border-radius: 9px;
+  border-style: solid;
+  border-color: #d3d3d3;
+  border-width: thin;
+  margin-bottom: 5px;
+  text-align: center;
+  width: 100%;
+}
