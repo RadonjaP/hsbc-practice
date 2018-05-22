@@ -12,7 +12,6 @@ import { FusionChartsModule } from 'angular4-fusioncharts';
 
 import { AppComponent } from './app.component';
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
-import { ImportDataComponent } from './components/import-data/import-data.component';
 import { InsertEmployeeComponent } from './components/insert-employee/insert-employee.component';
 import { EmployeeService } from './services/employee.service';
 import { IextradingChartComponent } from './components/iextrading-chart/iextrading-chart.component';
@@ -20,7 +19,6 @@ import { IextradingChartModule } from './components/iextrading-chart/iextrading-
 
 const routes: Routes = [
   {path: 'table', component: EmployeeTableComponent},
-  {path: 'import-data', component: ImportDataComponent},
   {path: 'iextrading-chart', component: IextradingChartComponent},
   {path: '**', redirectTo: '/table', pathMatch: 'full'}
 ]
@@ -29,7 +27,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     EmployeeTableComponent,
-    ImportDataComponent,
     InsertEmployeeComponent,
     IextradingChartComponent
   ],

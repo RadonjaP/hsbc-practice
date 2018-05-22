@@ -1,9 +1,9 @@
-<div class="main-container">
+<div>
   <h1 style="text-align: center; margin-bottom:40px;"> IEX Trading Chart </h1>
   <div class="select-container">
     <label for="selCompany">Select company:</label>
     <input type="text" value="Company Name" (change)="searchCompany()" [(ngModel)]="companyName">
-    <select id="selCompany" (change)="loadCompanyChart()" [(ngModel)]="companySymbol" size="20">
+    <select (scroll)="scrollFunction($event)" id="selCompany" (change)="loadCompanyChart()" [(ngModel)]="companySymbol" size="20">
       <option *ngFor="let company of companySelect" [ngValue]="company.symbol">
           {{company.name}}
       </option>

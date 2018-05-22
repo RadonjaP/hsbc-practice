@@ -1,5 +1,14 @@
-<a href="/table"> TABLE </a>  |||||
-<a href="/import-data"> IMPORT DATA </a> |||||
-<a href="/iextrading-chart"> IEX_TRADING </a>
-
-<router-outlet></router-outlet>
+<!-- mainframe -->
+<div class="mainframe">
+<!-- menu -->
+  <div>
+    <table class="menu">
+      <tr>
+        <td class="menu-cell" *ngFor="let tab of tabs" (click)="route(tab.href)">
+          {{tab.name}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <router-outlet></router-outlet>
+</div>

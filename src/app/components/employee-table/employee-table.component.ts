@@ -7,7 +7,7 @@ import { TableHeader, FilterField } from 'cust-component-library';
 @Component({
   selector: 'app-employee-table',
   templateUrl: './employee-table.component.html',
-  styleUrls: ['./employee-table.style.css', '../../app.component.css'],
+  styleUrls: ['./employee-table.style.css'],
   providers: []
 })
 

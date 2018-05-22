@@ -1,6 +1,30 @@
-.main-container {
+.mainframe {
+  margin-top: 1%;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 5%;
-  margin-bottom: 10%;
+  border-style: solid;
+  border-width: thin;
+  border-color: #ffb3b3;
+  border-radius: 5px;
+}
+
+.menu {
+  height: 50px;
+  width: 50%;
+  margin-bottom: 2%;
+  padding-left: 5%;
+}
+
+.menu-cell {
+  background-color: #ff9999;
+  text-align: center;
+  border-style: solid;
+  border-color: #ffb3b3;
+  border-width: thin;
+  font-size: 20px;
+}
+
+.menu-cell:hover {
+  cursor: grab;
+  background-color: #ffe6e6;
 }

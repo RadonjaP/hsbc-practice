@@ -5,7 +5,7 @@ import { TableHeader } from 'cust-component-library';
 @Component({
   selector: 'live-chart',
   templateUrl: './iextrading-chart.component.html',
-  styleUrls: ['./iextrading-chart.component.css', '../../app.component.css']
+  styleUrls: ['./iextrading-chart.component.css']
 })
 export class IextradingChartComponent implements OnInit {
 
@@ -33,6 +33,9 @@ export class IextradingChartComponent implements OnInit {
   public dataFormat = 'json';
   public dataSource = {};
 
+  public currTop = 0;
+  public currBot = 300;
+
   constructor(private iextradingService: IextradingService) {
     this.dataSource = {
       "chart": {
@@ -40,7 +43,7 @@ export class IextradingChartComponent implements OnInit {
         "subCaption": "Volume Weighted Average Price during one month period",
         "theme": "ocean",
         "xaxisname": "Date",
-        "yaxisname": "Volume",
+        "yaxisname": "Volume"
       },
       "data": this.chartData
     }
@@ -48,8 +51,8 @@ export class IextradingChartComponent implements OnInit {
 
   ngOnInit() {
     this.iextradingService.getCompanies().subscribe(res => {
-      this.companies = res.json().slice(0, 10);
-      this.companySelect = this.companies;
+      this.companies = res.json();
+      this.companySelect = this.companies.slice(0, 300);
     });;
   }
 
@@ -71,6 +74,10 @@ export class IextradingChartComponent implements OnInit {
     this.companySelect = this.companies.filter(company => {
       return String(company.name).toLowerCase().includes(this.companyName.toLowerCase());
     });
+  }
+
+  public scrollFunction($event) {
+
   }
 
   private prepareForChart(results) {
